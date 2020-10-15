@@ -7,20 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
     }
 
     public void onClickAutenticar(View view) {
         String appUser = ((EditText) findViewById(R.id.userName)).getText().toString();
         String appPassword = ((EditText) findViewById(R.id.userPassword)).getText().toString();
 
-        Intent intent = new Intent(this, Dashboard.class);
+        if(appUser.equals("aluno") && appPassword.equals("aluno")){
+            Intent intentStudent = new Intent(this, DashboardActivity.class);
+            startActivity(intentStudent);
 
-        startActivity(intent);
+        } else if(appUser.equals("coordenador") && appPassword.equals("coordenador")){
+            Intent intentCoordinator = new Intent(this, CoordinatorDashboardActivity.class);
+            startActivity(intentCoordinator);
+        }
+
     }
 }

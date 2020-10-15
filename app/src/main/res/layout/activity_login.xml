@@ -4,20 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".LoginActivity"
     android:padding="24dp"
     android:orientation="vertical"
     >
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+    <include
+        layout="@layout/logo_uniso_layout"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center">
+
+    </include>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Usuário"
         android:textColor="#3F86B5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:text="Senha"
         android:textColor="#3F86B5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,15 +52,14 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="#3F86B5"
         android:onClick="onClickAutenticar"
         android:text="Autenticar"
         android:textColor="#FFFFFF"
-        android:textColorHighlight="#FFFFFF"
-        />
+        android:textColorHighlight="#FFFFFF" />
 
 
 </LinearLayout>
