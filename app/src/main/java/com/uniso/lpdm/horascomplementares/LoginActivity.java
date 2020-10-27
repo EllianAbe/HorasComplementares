@@ -22,15 +22,20 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+    /*  aqui está feito um método genérico de login, que deve ser substituido para tornar
+        a combinação login / password dinamica.
+     */
     public void onClickAutenticar(View view) {
         String appUser = ((EditText) findViewById(R.id.userName)).getText().toString();
         String appPassword = ((EditText) findViewById(R.id.userPassword)).getText().toString();
 
+        // se aluno vai para dashboard de aluno
         if(appUser.equals("aluno") && appPassword.equals("aluno")){
             Intent intentStudent = new Intent(this, DashboardActivity.class);
             startActivity(intentStudent);
-
-        } else if(appUser.equals("coordenador") && appPassword.equals("coordenador")){
+        }
+        // se coordenador vai para dashboard de coordenador;
+        else if(appUser.equals("coordenador") && appPassword.equals("coordenador")){
             Intent intentCoordinator = new Intent(this, CoordinatorDashboardActivity.class);
             startActivity(intentCoordinator);
         }

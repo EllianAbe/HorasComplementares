@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/*  essa atividade deve ser responsável pela visualização pelo coordenador das atividades
+    aqui ele deverá verificar as atividades que estão pendentes de aprovação e aprovar ou rejeitar.
+ */
 public class CoordinatorDashboardActivity extends AppCompatActivity {
 
     @Override
