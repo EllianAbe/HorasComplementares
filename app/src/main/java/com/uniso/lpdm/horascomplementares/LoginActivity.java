@@ -1,3 +1,10 @@
+/*
+Anderson Paulino (00101112)
+André Mobaier (00101025)
+Ellian Abe (00098381)
+Matheus Montalvão (00100234) 
+*/
+
 package com.uniso.lpdm.horascomplementares;
 
 import androidx.appcompat.app.AppCompatActivity;
