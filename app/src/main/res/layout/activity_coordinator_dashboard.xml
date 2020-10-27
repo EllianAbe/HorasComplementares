@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="AQUI DEVEM APARECER AS ATIVIDADES PARA O COORDENADOR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#3DDC84"
-            android:text="Button" />
+            android:text="@string/aprovar" />
 
         <Button
             android:id="@+id/button6"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FF0000"
-            android:text="Button" />
+            android:text="@string/rejeitar" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

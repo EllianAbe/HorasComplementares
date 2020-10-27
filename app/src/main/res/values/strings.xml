@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">HorasComplementares</string>
     <string name="uniso_logo">Uniso Logo</string>
+    <string name="aprovar">Aprovar</string>
+    <string name="rejeitar">Rejeitar</string>
 </resources>
