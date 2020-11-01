@@ -1,16 +1,21 @@
 package com.uniso.lpdm.horascomplementares;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class DashboardActivity extends AppCompatActivity {
     int currentProgress;
     ProgressBar simpleProgressBar, progressBarIdiomas, progressBarEventos, progressBarFormacaoComplementar;
+    TextView percentage;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     // PEGA O PROGRESSO DE CADA CATEGORIA E PROGRESSO TOTAL.
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setProgressBar(){
           currentProgress = 20;
 
@@ -31,8 +37,12 @@ public class DashboardActivity extends AppCompatActivity {
 //        }
 
         simpleProgressBar=(ProgressBar) findViewById(R.id.progressBar); // initiate the progress bar
+        percentage = (TextView) findViewById(R.id.percent);
+
         simpleProgressBar.setMax(getMax());
         simpleProgressBar.setProgress(currentProgress);
+
+        percentage.setText(String.format("%d%%", currentProgress / getMax()));
 
         progressBarIdiomas =(ProgressBar) findViewById(R.id.progressBarIdiomas);
         progressBarIdiomas.setMax(30);
