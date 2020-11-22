@@ -92,6 +92,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lista;
     }
 
+    public List<AtividadeComplementar> selecionarPendentes() {
+        List<AtividadeComplementar> lista = new ArrayList<>();
+        String consulta = "SELECT * FROM " + TABELA_ATIVIDADE + " WHERE " + COLUNA_STATUS + " = 0";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Usando rawQuery pois ele retorna um cursor
+        Cursor cursor = db.rawQuery(consulta, null);
+
+        // Se existirem registros na tabela
+        if(cursor.moveToFirst()) {
+            // Para cada linha na consulta criar um objeto e inseri-lo na lista
+            do {
+                int atividadeId = cursor.getInt(0);
+                String atividadeNome = cursor.getString(1);
+                String atividadeTipo = cursor.getString(2);
+                int atividadeNumHoras = cursor.getInt(3);
+                int atividadeStatus = cursor.getInt(4);
+
+                // Instanciar o objeto
+                AtividadeComplementar ac = new AtividadeComplementar(atividadeId, atividadeNome, atividadeTipo, atividadeNumHoras, atividadeStatus);
+                lista.add(ac);
+
+            } while(cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return lista;
+    }
+
     private void atualizarBanco(SQLiteDatabase db, int oldVersion, int newVersion){
         String sql;
 

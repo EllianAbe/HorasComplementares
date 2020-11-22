@@ -7,25 +7,16 @@
     android:background="#FFFFFF"
     tools:context=".CoordinatorDashboardActivity">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="AQUI DEVEM APARECER AS ATIVIDADES PARA O COORDENADOR"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/layoutCoordinatorId"
         android:layout_width="350dp"
         android:layout_height="34dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/atividadesPendentes">
 
         <Button
             android:id="@+id/button5"
@@ -43,5 +34,13 @@
             android:background="#FF0000"
             android:text="@string/rejeitar" />
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/atividadesPendentes"
+        android:layout_width="221dp"
+        android:layout_height="62dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
