@@ -95,4 +95,11 @@
         android:text="Compartilhar Progresso"
         android:onClick="onClickCompartilhar"/>
 
+    <Button
+        android:id="@+id/buttonAddAtividade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adicionar_atividade"
+        android:onClick="onClickAddAtividade"/>
+
 </LinearLayout>

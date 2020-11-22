@@ -81,4 +81,10 @@ public class DashboardActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_TEXT, progressReport);
         startActivity(intent);
     }
+
+    public void onClickAddAtividade(View view){
+        Intent intent = new Intent(this, CadastroAtividadeActivity.class);
+
+        startActivity(intent);
+    }
 }

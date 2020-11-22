@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,6 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         else if(appUser.equals("coordenador") && appPassword.equals("coordenador")){
             Intent intentCoordinator = new Intent(this, CoordinatorDashboardActivity.class);
             startActivity(intentCoordinator);
+        }
+        else{
+            Toast toast = Toast.makeText(this, "Usuário / Senha incorretos!", Toast.LENGTH_SHORT);
+            toast.show();
         }
 
     }
