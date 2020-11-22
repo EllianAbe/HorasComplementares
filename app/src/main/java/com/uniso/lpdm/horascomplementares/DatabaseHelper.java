@@ -47,6 +47,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert("LOGIN", null, login);
     }
 
+
+
     public boolean adicionarAtividade(AtividadeComplementar atividadeComplementar) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -59,6 +61,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long insert = db.insert(TABELA_ATIVIDADE, null, cv);
 
         return insert == -1;
+    }
+
+    public void atualizarAtividade(int novoStatus) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = String.format("UPDATE %s SET %s = %d", //WHERE %s = %d",
+                TABELA_ATIVIDADE, COLUNA_STATUS, novoStatus); // COLUNA_ID, id);
+
+        db.execSQL(sql);
+
+        db.close();
     }
 
     public List<AtividadeComplementar> selecionarTodos() {

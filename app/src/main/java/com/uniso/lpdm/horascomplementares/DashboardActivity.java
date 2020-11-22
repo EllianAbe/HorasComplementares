@@ -1,8 +1,8 @@
 package com.uniso.lpdm.horascomplementares;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends Activity {
     int currentProgress;
     ProgressBar simpleProgressBar, progressBarIdiomas, progressBarEventos, progressBarFormacaoComplementar;
     TextView percentage;

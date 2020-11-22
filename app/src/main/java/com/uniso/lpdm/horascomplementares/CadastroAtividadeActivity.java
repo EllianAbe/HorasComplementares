@@ -2,20 +2,23 @@ package com.uniso.lpdm.horascomplementares;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
 
-public class CadastroAtividadeActivity extends AppCompatActivity {
+public class CadastroAtividadeActivity extends Activity {
 
     // Variáveis de controle do layout
-    EditText campo1, campo2, campo3;
+    EditText campo1, campo3;
+    Spinner campo2;
     Button btnViewAll, btnAdd;
     ListView lvAtividades;
 
@@ -25,7 +28,7 @@ public class CadastroAtividadeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_atividade);
 
         campo1 = (EditText) findViewById(R.id.et_campo1);
-        campo2 = (EditText) findViewById(R.id.et_campo2);
+        campo2 = (Spinner) findViewById(R.id.sp_campo2);
         campo3 = (EditText) findViewById(R.id.et_campo3);
         btnViewAll = (Button) findViewById(R.id.btn_selectAll);
         btnAdd = (Button) findViewById((R.id.btn_add));
@@ -50,7 +53,7 @@ public class CadastroAtividadeActivity extends AppCompatActivity {
                 AtividadeComplementar ac = null;
                 DatabaseHelper databaseHelper = new DatabaseHelper(CadastroAtividadeActivity.this);
                 try {
-                    ac = new AtividadeComplementar(-1, campo1.getText().toString(), campo2.getText().toString(), Integer.parseInt(campo3.getText().toString()), 0);
+                    ac = new AtividadeComplementar(-1, campo1.getText().toString(), campo2.getSelectedItem().toString(), Integer.parseInt(campo3.getText().toString()), 0);
                     databaseHelper.adicionarAtividade(ac);
                     Toast.makeText(CadastroAtividadeActivity.this, "Sucesso!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
