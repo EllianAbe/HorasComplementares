@@ -1,7 +1,5 @@
 package com.uniso.lpdm.horascomplementares;
 
-import androidx.annotation.RequiresApi;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
@@ -10,58 +8,63 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class DashboardActivity extends Activity {
-    int currentProgress;
+    final int TOTALMAX = 240, IDIOMAMAX = 100, EXTRACURRICULARMAX = 80, CURSOMAX = 120;
+    int horaTotal, horaIdioma, horaExtraCurricular, horaCurso;
     ProgressBar simpleProgressBar, progressBarIdiomas, progressBarEventos, progressBarFormacaoComplementar;
     TextView percentage;
+    DatabaseHelper db;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        db = new DatabaseHelper(this);
+
         setProgressBar();
     }
 
     // PEGA O PROGRESSO DE CADA CATEGORIA E PROGRESSO TOTAL.
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setProgressBar(){
-          currentProgress = 20;
+        List<AtividadeComplementar> aprovadas = db.selecionarAprovadas();
 
-//        List<Progress> progressList = getProgress();
-//
-//        for(Progress progress : progressList){
-//            renderIndividualProgress(progress);
-//            currentProgress += progress.progressValue;
-//        }
+        for(AtividadeComplementar atividade : aprovadas) {
+            switch (atividade.getTipo()){
+                case "Curso": horaCurso += atividade.getNumHoras(); break;
+                case "Extracurricular": horaExtraCurricular += atividade.getNumHoras(); break;
+                case "Idioma": horaIdioma += atividade.getNumHoras(); break;
+            }
+        }
+
+        horaCurso = Math.min(horaCurso, CURSOMAX);
+        horaIdioma = Math.min(horaIdioma, IDIOMAMAX);
+        horaExtraCurricular = Math.min(horaExtraCurricular, EXTRACURRICULARMAX);
+
+        horaTotal = Math.min(horaCurso + horaExtraCurricular + horaIdioma, TOTALMAX);
 
         simpleProgressBar=(ProgressBar) findViewById(R.id.progressBar); // initiate the progress bar
         percentage = (TextView) findViewById(R.id.percent);
 
-        simpleProgressBar.setMax(getMax());
-        simpleProgressBar.setProgress(currentProgress);
+        simpleProgressBar.setMax(TOTALMAX);
+        simpleProgressBar.setProgress(horaTotal);
 
-        percentage.setText(String.format("%d%%", currentProgress / getMax()));
+        percentage.setText(String.format("%d%%", horaTotal / TOTALMAX));
 
         progressBarIdiomas =(ProgressBar) findViewById(R.id.progressBarIdiomas);
-        progressBarIdiomas.setMax(30);
-        progressBarIdiomas.setProgress(30);
+        progressBarIdiomas.setMax(IDIOMAMAX);
+        progressBarIdiomas.setProgress(horaIdioma);
 
         progressBarEventos =(ProgressBar) findViewById(R.id.progressBarEvento);
-        progressBarEventos.setMax(20);
-        progressBarEventos.setProgress(10);
+        progressBarEventos.setMax(EXTRACURRICULARMAX);
+        progressBarEventos.setProgress(horaExtraCurricular);
 
         progressBarFormacaoComplementar  =(ProgressBar) findViewById(R.id.progressBarFormacaoComplementar);
-        progressBarFormacaoComplementar.setMax(50);
-        progressBarFormacaoComplementar.setProgress(25);
+        progressBarFormacaoComplementar.setMax(CURSOMAX);
+        progressBarFormacaoComplementar.setProgress(horaCurso);
     }
-
-    // ESSA FUNÇÃO É PARA EFEITOS DE DEMONSTRAÇÃO, ELA PRECISA SER ALTERADA PARA QUANDO UTILIZARMOS UMA API NO BANCO
-    private int getMax(){
-        return 100;
-    }
-
 
     /* essa atividade gera um report basicão com o progresso total e o progresso de cada categoria,
        esse progresso é formatado como string e compartilhado usando ACTION_SEND*/

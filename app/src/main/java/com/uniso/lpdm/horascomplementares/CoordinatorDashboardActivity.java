@@ -35,11 +35,13 @@ public class CoordinatorDashboardActivity extends Activity {
     };
 
     public void onClickAceitar(View view){
-        databaseHelper.atualizarAtividade(10);
+        databaseHelper.atualizarTodasAtividades(10);
+        listarAtividades();
     }
 
     public void onClickRejeitar(View view) {
-        databaseHelper.atualizarAtividade(20);
+        databaseHelper.atualizarTodasAtividades(20);
+        listarAtividades();
     }
 
 }

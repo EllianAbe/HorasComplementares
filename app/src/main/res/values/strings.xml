@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">HorasComplementares</string>
     <string name="uniso_logo">Uniso Logo</string>
-    <string name="aprovar">Aprovar</string>
-    <string name="rejeitar">Rejeitar</string>
+    <string name="aprovar">Aprovar Todos</string>
+    <string name="rejeitar">Rejeitar Todos</string>
     <string name="campo1">Nome da atividade</string>
     <string name="campo2">Tipo</string>
     <string name="campo3">Número de horas</string>

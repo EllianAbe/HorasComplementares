@@ -63,11 +63,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insert == -1;
     }
 
-    public void atualizarAtividade(int novoStatus) {
+    public void atualizarTodasAtividades(int novoStatus) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String sql = String.format("UPDATE %s SET %s = %d", //WHERE %s = %d",
-                TABELA_ATIVIDADE, COLUNA_STATUS, novoStatus); // COLUNA_ID, id);
+        String sql = String.format("UPDATE %s SET %s = %d WHERE %s = 0",
+                TABELA_ATIVIDADE, COLUNA_STATUS, novoStatus, COLUNA_STATUS);
 
         db.execSQL(sql);
 
@@ -105,9 +105,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lista;
     }
 
-    public List<AtividadeComplementar> selecionarPendentes() {
+
+    public List<AtividadeComplementar> selecionarPorStatus(int iStatus) {
         List<AtividadeComplementar> lista = new ArrayList<>();
-        String consulta = "SELECT * FROM " + TABELA_ATIVIDADE + " WHERE " + COLUNA_STATUS + " = 0";
+        String consulta = "SELECT * FROM " + TABELA_ATIVIDADE + " WHERE " + COLUNA_STATUS + " = " + iStatus;
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Usando rawQuery pois ele retorna um cursor
@@ -134,6 +135,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return lista;
+    }
+
+    public List<AtividadeComplementar> selecionarPendentes() {
+        return  selecionarPorStatus(0);
+    }
+
+    public List<AtividadeComplementar> selecionarAprovadas() {
+        return  selecionarPorStatus(10);
     }
 
     private void atualizarBanco(SQLiteDatabase db, int oldVersion, int newVersion){
