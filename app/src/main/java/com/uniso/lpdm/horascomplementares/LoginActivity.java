@@ -17,6 +17,15 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    /*
+        PARA IR PARA O DASHBOARD DO ALUNO
+        Usuário: aluno
+        Senha: aluno
+        PARA IR PARA O DASHBOARD DO COORDENADOR
+        Usuário: coordenador
+        Senha: coordenador
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

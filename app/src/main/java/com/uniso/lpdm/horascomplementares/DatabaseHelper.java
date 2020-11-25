@@ -37,18 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         atualizarBanco(db, oldVersion, newVersion);
     }
 
-    public static void insertLogin(SQLiteDatabase db, String username, String password,
-                                   int coordinator){
-
-        ContentValues login = new ContentValues();
-        login.put("username", username);
-        login.put("password", password);
-        login.put("coordinator", coordinator);
-        db.insert("LOGIN", null, login);
-    }
-
-
-
     public boolean adicionarAtividade(AtividadeComplementar atividadeComplementar) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -149,18 +137,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sql;
 
         if(oldVersion < 1){
-
-            // CRIANDO TABELA DE USUARIOS E SENHAS
-            sql = "CREATE TABLE LOGIN (\n" +
-                    "    username TEXT NOT NULL PRIMARY KEY,\n" +
-                    "    password TEXT NOT NULL,\n" +
-                    "    coordinator BIT,\n" +
-                    "    created_at DATETIME DEFAULT CURRENT_TIMESTAMP\n" +
-                    ");";
-
-            db.execSQL(sql);
-
-
             // CRIANDO TABELA DE ATIVIDADES COMPLEMENTARES
             sql = "CREATE TABLE " + TABELA_ATIVIDADE +
                     " (" + COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -170,9 +146,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUNA_STATUS + " INTEGER)";
 
             db.execSQL(sql);
-
-            insertLogin(db, "aluno", "aluno", 0);
-            insertLogin(db, "coordenador", "coordenador", 1);
         }
     }
 }

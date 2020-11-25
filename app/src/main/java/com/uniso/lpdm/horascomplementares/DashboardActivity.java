@@ -2,7 +2,6 @@ package com.uniso.lpdm.horascomplementares;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -27,7 +26,7 @@ public class DashboardActivity extends Activity {
         setProgressBar();
     }
 
-    // PEGA O PROGRESSO DE CADA CATEGORIA E PROGRESSO TOTAL.
+    // ATUALIZA O PROGRESSO DE CADA CATEGORIA E PROGRESSO TOTAL.
     public void setProgressBar(){
         List<AtividadeComplementar> aprovadas = db.selecionarAprovadas();
 
@@ -51,7 +50,9 @@ public class DashboardActivity extends Activity {
         simpleProgressBar.setMax(TOTALMAX);
         simpleProgressBar.setProgress(horaTotal);
 
-        percentage.setText(String.format("%d%%", horaTotal / TOTALMAX));
+        // Casting da conta de porcentagem para exibir no TextView de Progresso
+        float p = (float) horaTotal/TOTALMAX * 100;
+        percentage.setText(String.format("%.1f", p) + "%");
 
         progressBarIdiomas =(ProgressBar) findViewById(R.id.progressBarIdiomas);
         progressBarIdiomas.setMax(IDIOMAMAX);
@@ -66,7 +67,7 @@ public class DashboardActivity extends Activity {
         progressBarFormacaoComplementar.setProgress(horaCurso);
     }
 
-    /* essa atividade gera um report basicão com o progresso total e o progresso de cada categoria,
+    /* Essa atividade gera um report basicão com o progresso total e o progresso de cada categoria,
        esse progresso é formatado como string e compartilhado usando ACTION_SEND*/
     public void onClickCompartilhar(View view) {
         Intent intent = new Intent(Intent.ACTION_SEND);
@@ -85,6 +86,7 @@ public class DashboardActivity extends Activity {
         startActivity(intent);
     }
 
+    // VAI PARA A ACTIVITY DE CADASTRO DE NOVAS ATIVIDADES COMPLEMENTARES NO BANCO
     public void onClickAddAtividade(View view){
         Intent intent = new Intent(this, CadastroAtividadeActivity.class);
 
