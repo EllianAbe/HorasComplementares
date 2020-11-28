@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:background="@drawable/app_background4"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".DashboardActivity">
@@ -43,6 +44,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         android:text="Idiomas" />
 
     <ProgressBar
@@ -55,6 +57,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         android:text="Atividades extracurriculares" />
 
     <ProgressBar
@@ -67,6 +70,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         android:text="Eventos" />
 
     <ProgressBar
@@ -79,14 +83,20 @@
         android:id="@+id/buttonShareProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#2196F3"
+        android:onClick="onClickCompartilhar"
         android:text="Compartilhar Progresso"
-        android:onClick="onClickCompartilhar"/>
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/buttonAddAtividade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#2196F3"
+        android:onClick="onClickAddAtividade"
         android:text="@string/adicionar_atividade"
-        android:onClick="onClickAddAtividade"/>
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
