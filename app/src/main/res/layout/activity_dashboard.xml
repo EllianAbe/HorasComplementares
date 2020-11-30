@@ -41,11 +41,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtIdiomas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:text="Idiomas" />
+        android:text="@string/idiomas" />
 
     <ProgressBar
         android:id="@+id/progressBarIdiomas"
@@ -54,27 +54,27 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtCursos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:text="Atividades extracurriculares" />
+        android:text="Cursos" />
 
     <ProgressBar
-        android:id="@+id/progressBarFormacaoComplementar"
+        android:id="@+id/progressBarCursos"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtExtracurricular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:text="Eventos" />
+        android:text="@string/atividade_extracurricular" />
 
     <ProgressBar
-        android:id="@+id/progressBarEvento"
+        android:id="@+id/progressBarAtividadesExtracurriculares"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

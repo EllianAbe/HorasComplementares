@@ -5,6 +5,7 @@ public class AtividadeComplementar {
     private String nome;
     private String tipo;
     private int numHoras;
+
     private int status;
 
     // Construtor
@@ -55,8 +56,19 @@ public class AtividadeComplementar {
         return numHoras;
     }
 
+
     public int getStatus() {
         return status;
+    }
+
+    public String getStatusDesc() {
+        switch (status){
+            case 0: return "Pendente";
+            case 10: return "Aprovada";
+            case 20: return "Rejeitada";
+        }
+
+        return "Status genérico";
     }
 
     public void setStatus(int status) {

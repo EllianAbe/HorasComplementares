@@ -3,24 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/app_background4"
     tools:context=".CoordinatorDashboardActivity">
 
+    <ListView
+        android:id="@+id/atividadesPendentes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="55dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutCoordinatorId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.652"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <LinearLayout
         android:id="@+id/layoutCoordinatorId"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/atividadesPendentes">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnAceitar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="#2196F3"
             android:onClick="onClickAceitar"
@@ -28,25 +44,15 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btnRejeitar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="#2196F3"
             android:onClick="onClickRejeitar"
             android:text="@string/rejeitar"
             android:textColor="#FFFFFF" />
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/atividadesPendentes"
-        android:layout_width="346dp"
-        android:layout_height="550dp"
-        android:layout_marginTop="36dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

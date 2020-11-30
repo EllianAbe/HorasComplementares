@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -51,15 +52,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insert == -1;
     }
 
-    public void atualizarTodasAtividades(int novoStatus) {
+    public boolean atualizarAtividades(int novoStatus, Collection<Integer> idCollection) {
+
+        if(idCollection.size() == 0){
+            return false;
+        }
+
+        String inClause = new String();
+
+        for (Integer i: idCollection) {
+            inClause += "," + i.toString();
+        }
+
+        inClause = inClause.replaceFirst(",", "(");
+        inClause += ")";
+
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String sql = String.format("UPDATE %s SET %s = %d WHERE %s = 0",
-                TABELA_ATIVIDADE, COLUNA_STATUS, novoStatus, COLUNA_STATUS);
+        String sql = String.format("UPDATE %s SET %s = %d WHERE %s = 0 and %s IN " + inClause,
+                TABELA_ATIVIDADE, COLUNA_STATUS, novoStatus, COLUNA_STATUS, COLUNA_ID);
 
         db.execSQL(sql);
 
         db.close();
+
+        return true;
     }
 
     public List<AtividadeComplementar> selecionarTodos() {

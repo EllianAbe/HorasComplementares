@@ -39,7 +39,10 @@ public class CadastroAtividadeActivity extends Activity {
                 DatabaseHelper databaseHelper = new DatabaseHelper(CadastroAtividadeActivity.this);
                 List<AtividadeComplementar> todos = databaseHelper.selecionarTodos();
 
-                ArrayAdapter atividadeAdapter = new ArrayAdapter<AtividadeComplementar>(CadastroAtividadeActivity.this, android.R.layout.simple_list_item_1, todos);
+                AtividadeComplementarAdapter atividadeAdapter = new AtividadeComplementarAdapter(
+                        CadastroAtividadeActivity.this,
+                        R.layout.atividade_list_element,
+                        todos);
                 lvAtividades.setAdapter(atividadeAdapter);
             }
         });
@@ -48,14 +51,20 @@ public class CadastroAtividadeActivity extends Activity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AtividadeComplementar ac = null;
                 DatabaseHelper databaseHelper = new DatabaseHelper(CadastroAtividadeActivity.this);
+
                 try {
+
                     ac = new AtividadeComplementar(-1, campo1.getText().toString(), campo2.getSelectedItem().toString(), Integer.parseInt(campo3.getText().toString()), 0);
                     databaseHelper.adicionarAtividade(ac);
                     Toast.makeText(CadastroAtividadeActivity.this, "Sucesso!", Toast.LENGTH_SHORT).show();
+
                 } catch (Exception e) {
+
                     Toast.makeText(CadastroAtividadeActivity.this, "Erro ao criar atividade!", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

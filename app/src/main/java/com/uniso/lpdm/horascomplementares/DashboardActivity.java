@@ -58,11 +58,11 @@ public class DashboardActivity extends Activity {
         progressBarIdiomas.setMax(IDIOMAMAX);
         progressBarIdiomas.setProgress(horaIdioma);
 
-        progressBarEventos =(ProgressBar) findViewById(R.id.progressBarEvento);
+        progressBarEventos =(ProgressBar) findViewById(R.id.progressBarAtividadesExtracurriculares);
         progressBarEventos.setMax(EXTRACURRICULARMAX);
         progressBarEventos.setProgress(horaExtraCurricular);
 
-        progressBarFormacaoComplementar  =(ProgressBar) findViewById(R.id.progressBarFormacaoComplementar);
+        progressBarFormacaoComplementar  =(ProgressBar) findViewById(R.id.progressBarCursos);
         progressBarFormacaoComplementar.setMax(CURSOMAX);
         progressBarFormacaoComplementar.setProgress(horaCurso);
     }
